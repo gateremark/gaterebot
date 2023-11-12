@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <>
             <main className="">
-                <header>Welcome to Main Page</header>
+                <header>Welcome to Chat Page</header>
             </main>
         </>
     );
