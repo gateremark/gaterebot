@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     openGraph: {
         images: [
             {
-                url: "https://res.cloudinary.com/dvuazircp/image/upload/v1699262306/new_portfolio/gaterebotorig_ymxuzb.webp",
+                url: "https://res.cloudinary.com/dvuazircp/image/upload/v1699262306/new_portfolio/gaterebot_ul4hei.webp",
             },
         ],
     },
