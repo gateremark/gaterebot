@@ -27,7 +27,7 @@ const Signin = () => {
 
     return (
         <div className="flex flex-wrap w-full justify-center items-center">
-            <div className=" relative flex flex-col justify-center items-center h-screen bg-[#000000] w-full md:w-[60%] text-[#ffffff]">
+            <div className=" relative flex flex-col justify-center items-center md:h-screen h-[50%] bg-[#000000] w-full md:w-[60%] text-[#ffffff]">
                 <Image
                     src="/gaterebot.webp"
                     priority={true}
@@ -37,12 +37,12 @@ const Signin = () => {
                     className="w-1/2"
                 />
             </div>
-            <div className="flex flex-col gap-10 justify-center items-center h-screen bg-[#00002E] w-full md:w-[40%] text-[#ffffff]">
+            <div className="flex flex-col gap-10 justify-center items-center md:h-screen h-[50%] bg-[#00002E] w-full md:w-[40%] text-[#ffffff]">
                 {" "}
                 {providers && (
                     <>
                         <h1 className="text-4xl">Hello there!</h1>
-                        <h1 className="text-xl">
+                        <h1 className="text-xl text-center">
                             <ReactTyped
                                 strings={[
                                     "Welcome to gaterebot!",
