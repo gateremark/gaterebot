@@ -12,6 +12,16 @@ export const metadata: Metadata = {
     title: "gaterebot",
     description:
         "gaterebot is an innovative chat application powered by ChatGPT through the OpenAI API.",
+    openGraph: {
+        images: [
+            {
+                url: "https://res.cloudinary.com/dvuazircp/image/upload/v1699262306/new_portfolio/gaterebotorig_ymxuzb.webp",
+            },
+        ],
+    },
+    icons: {
+        icon: "/favicon.ico",
+    },
 };
 
 export default function RootLayout({
@@ -21,9 +31,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <head>
+            {/* <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
-            </head>
+            </head> */}
             <body className={roboto.className}>{children}</body>
         </html>
     );

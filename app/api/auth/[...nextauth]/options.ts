@@ -11,11 +11,11 @@ export const options: NextAuthOptions = {
             httpOptions: { timeout: 10000 },
         }),
 
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID as string,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-            httpOptions: { timeout: 10000 },
-        }),
+        // GoogleProvider({
+        //     clientId: process.env.GOOGLE_CLIENT_ID as string,
+        //     clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        //     httpOptions: { timeout: 10000 },
+        // }),
 
         // CredentialsProvider({
         //     // The name to display on the sign in form (e.g. "Sign in with...")

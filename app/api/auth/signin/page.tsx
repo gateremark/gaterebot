@@ -47,7 +47,7 @@ const Signin = () => {
                                 strings={[
                                     "Welcome to gaterebot!",
                                     "Write an application email for a job...",
-                                    "Help me write a cover letter for an internship ...",
+                                    "Help me write a cover letter for an internship...",
                                     "Help me debug the Python script...",
                                 ]}
                                 typeSpeed={100}
@@ -67,23 +67,24 @@ const Signin = () => {
                                 style={{ marginBottom: 0 }}
                                 className=""
                             >
-                                {provider.id === "github" ? (
-                                    <button
-                                        className="flex gap-2 items-center justify-center bg-[#000000] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
-                                        onClick={() => signIn(provider.id)}
-                                    >
-                                        <FaGithub className="text-2xl" />
-                                        Sign in with {provider.name}
-                                    </button>
-                                ) : (
-                                    <button
-                                        className="flex gap-2 items-center justify-center text-[#000000] bg-[#ffffff] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
-                                        onClick={() => signIn(provider.id)}
-                                    >
-                                        <FcGoogle className="text-2xl" />
-                                        Sign in with {provider.name}
-                                    </button>
-                                )}
+                                {/* {provider.id === "github" ? ( */}
+                                <button
+                                    className="flex gap-2 items-center justify-center bg-[#000000] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
+                                    onClick={() => signIn(provider.id)}
+                                >
+                                    <FaGithub className="text-2xl" />
+                                    Sign in with {provider.name}
+                                </button>
+                                {/*
+                                 ) : (
+                                     <button
+                                         className="flex gap-2 items-center justify-center text-[#000000] bg-[#ffffff] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
+                                         onClick={() => signIn(provider.id)}
+                                     >
+                                         <FcGoogle className="text-2xl" />
+                                         Sign in with {provider.name}
+                                     </button>
+                                 )} */}
                             </div>
                         ))
                     ) : (
