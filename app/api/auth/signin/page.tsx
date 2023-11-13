@@ -5,14 +5,15 @@ import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import { signIn, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import ReactTyped from "react-typed";
 
 const Signin = () => {
     const [providers, setProviders] = useState<Record<string, any> | null>(
         null
     );
-    const router = useRouter();
+    // const router = useRouter();
+
     useEffect(() => {
         const fetchProviders = async () => {
             const providers = await getProviders();
@@ -29,9 +30,10 @@ const Signin = () => {
             <div className=" relative flex flex-col justify-center items-center h-screen bg-[#000000] w-full md:w-[60%] text-[#ffffff]">
                 <Image
                     src="/gaterebot.webp"
+                    priority={true}
                     width={450}
                     height={450}
-                    alt="Picture of the author"
+                    alt="gaterebot logo"
                     className="w-1/2"
                 />
             </div>
