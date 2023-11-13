@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import AuthProvider from "./context/AuthProvider";
 
 const roboto = Roboto({
     weight: "400",
@@ -34,7 +35,9 @@ export default function RootLayout({
             {/* <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
             </head> */}
-            <body className={roboto.className}>{children}</body>
+            <body className={roboto.className}>
+                <AuthProvider> {children}</AuthProvider>
+            </body>
         </html>
     );
 }
