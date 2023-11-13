@@ -6,6 +6,7 @@ import Image from "next/image";
 import { signIn, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import ReactTyped from "react-typed";
 
 const Signin = () => {
     const [providers, setProviders] = useState<Record<string, any> | null>(
@@ -23,27 +24,41 @@ const Signin = () => {
         fetchProviders();
     }, []);
 
-    const handleSignIn = async (providerId: string) => {
-        const result = await signIn(providerId);
-        if (result?.url) {
-            // Redirect to home page after successful sign-in
-            router.push("/");
-        }
-    };
     return (
-        <div className="flex w-full justify-center items-center">
-            <div className=" relative flex flex-col justify-center items-center h-screen bg-[#000000] w-[60%] text-[#ffffff]">
+        <div className="flex flex-wrap w-full justify-center items-center">
+            <div className=" relative flex flex-col justify-center items-center h-screen bg-[#000000] w-full md:w-[60%] text-[#ffffff]">
                 <Image
                     src="/gaterebot.webp"
                     width={450}
                     height={450}
                     alt="Picture of the author"
+                    className="w-1/2"
                 />
             </div>
-            <div className="flex flex-col justify-center items-center h-screen bg-[#00002E] w-[40%] text-[#ffffff]">
+            <div className="flex flex-col gap-10 justify-center items-center h-screen bg-[#00002E] w-full md:w-[40%] text-[#ffffff]">
                 {" "}
+                {providers && (
+                    <>
+                        <h1 className="text-4xl">Hello there!</h1>
+                        <h1 className="text-xl">
+                            <ReactTyped
+                                strings={[
+                                    "Welcome to gaterebot!",
+                                    "Write an application email for a job...",
+                                    "Help me write a cover letter for an internship ...",
+                                    "Help me debug the Python script...",
+                                ]}
+                                typeSpeed={100}
+                                loop
+                                backSpeed={30}
+                                cursorChar="|"
+                                showCursor={true}
+                            />
+                        </h1>
+                    </>
+                )}
                 <div className="flex flex-col gap-3">
-                    {providers &&
+                    {providers ? (
                         Object.values(providers).map((provider) => (
                             <div
                                 key={provider.name}
@@ -53,9 +68,7 @@ const Signin = () => {
                                 {provider.id === "github" ? (
                                     <button
                                         className="flex gap-2 items-center justify-center bg-[#000000] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
-                                        onClick={() =>
-                                            handleSignIn(provider.id)
-                                        }
+                                        onClick={() => signIn(provider.id)}
                                     >
                                         <FaGithub className="text-2xl" />
                                         Sign in with {provider.name}
@@ -63,16 +76,20 @@ const Signin = () => {
                                 ) : (
                                     <button
                                         className="flex gap-2 items-center justify-center text-[#000000] bg-[#ffffff] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
-                                        onClick={() =>
-                                            handleSignIn(provider.id)
-                                        }
+                                        onClick={() => signIn(provider.id)}
                                     >
                                         <FcGoogle className="text-2xl" />
                                         Sign in with {provider.name}
                                     </button>
                                 )}
                             </div>
-                        ))}
+                        ))
+                    ) : (
+                        <div className="flex justify-center items-center h-screen">
+                            {" "}
+                            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#ffffff]"></div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
