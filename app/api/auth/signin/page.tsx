@@ -29,7 +29,7 @@ const Signin = () => {
         <div className="flex flex-wrap w-full justify-center items-center">
             <div className=" relative flex flex-col justify-center items-center md:h-screen h-[40vh] bg-[#000000] w-full md:w-[60%] text-[#ffffff]">
                 <Image
-                    src="/gaterebot.webp"
+                    src="https://res.cloudinary.com/dvuazircp/image/upload/v1699262306/new_portfolio/gaterebotorig_ymxuzb.webp"
                     priority={true}
                     width={450}
                     height={450}
