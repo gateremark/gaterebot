@@ -32,7 +32,7 @@ export default function Home() {
         <>
             <title>New Chat</title>
 
-            <div className="grid h-screen grid-cols-[260px_1fr]">
+            <div className="grid h-screen md:grid-cols-[260px_1fr]">
                 <ChatSidebar />
                 <div className="bg-[#343541] flex flex-col overflow-hidden">
                     <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8 pb-10 overflow-scroll">
