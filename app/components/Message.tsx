@@ -3,7 +3,12 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-const Message = ({ role, content }) => {
+interface MessageProps {
+    role: string;
+    content: string;
+}
+
+const Message: React.FC<MessageProps> = ({ role, content }) => {
     const { data: session } = useSession();
 
     return (
@@ -11,7 +16,7 @@ const Message = ({ role, content }) => {
             {role === "user" ? (
                 <div className="p-4 flex gap-5 items-start">
                     <Image
-                        src={session?.user?.image}
+                        src={session?.user?.image as string}
                         priority={true}
                         width={40}
                         height={40}

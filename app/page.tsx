@@ -29,33 +29,33 @@ export default function Home() {
         >
             <Toaster richColors position="top-right" closeButton />
             <section className="flex flex-col gap-6 justify-center items-center">
-                <h1 className=" text-[#ffffff] md:text-5xl text-3xl">
+                <h1 className=" text-[#ffffff] md:text-5xl text-3xl playpen">
                     Hello{" "}
                     {session?.user?.name
                         ? session?.user?.name
                         : session?.user?.email}{" "}
                 </h1>
                 <Image
-                    src={session?.user?.image}
+                    src={session?.user?.image as string}
                     priority={true}
                     width={100}
                     height={100}
                     alt="Profile "
                     className="rounded-md"
                 />
-                <h1 className=" text-[#ffffff] md:text-3xl text-xl">
+                <h1 className=" text-[#ffffff] md:text-3xl text-xl playpen">
                     Welcome to gaterebot
                 </h1>
                 {/* Link to chat */}
                 <div className="flex gap-3">
                     <Link
                         href="/chat"
-                        className="bg-[#ffffff] text-[#050816] p-2 md:p-3 rounded-lg hover:bg-[#646464] cursor-pointer transition ease-in-out duration-500"
+                        className="bg-[#ffffff] text-[#050816] p-2 md:p-3 rounded-lg hover:bg-[#646464] playpen cursor-pointer transition ease-in-out duration-500"
                     >
                         Continue to Chat
                     </Link>
                     <button
-                        className="bg-[#ffffff] text-[#050816] p-2 md:p-3 rounded-lg hover:bg-[#646464] cursor-pointer transition ease-in-out duration-500"
+                        className="bg-[#ffffff] text-[#050816] p-2 md:p-3 rounded-lg hover:bg-[#646464] playpen cursor-pointer transition ease-in-out duration-500"
                         onClick={() => signOut()}
                     >
                         Sign Out

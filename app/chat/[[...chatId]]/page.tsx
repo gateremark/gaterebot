@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { FormEvent } from "react";
 import ChatSidebar from "@/app/components/ChatSidebar";
 import { IoSend } from "react-icons/io5";
 import { useChat } from "ai/react";
@@ -18,11 +19,12 @@ export default function Home() {
     // setMessage((s) => `${s}${content}`);
     // console.log("Messages:", messages);
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === "Enter") {
             e.preventDefault();
+            const syntheticEvent = e as unknown as FormEvent<HTMLFormElement>;
             // Submit the form
-            handleSubmit(e);
+            handleSubmit(syntheticEvent);
         }
     };
 

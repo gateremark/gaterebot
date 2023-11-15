@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,4 +19,8 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #747484;
+}
+
+.playpen {
+    font-family: "Playpen Sans", cursive;
 }
