@@ -34,8 +34,8 @@ export default function Home() {
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
                 <ChatSidebar />
-                <div className="bg-[#343541] flex flex-col">
-                    <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8">
+                <div className="bg-[#343541] flex flex-col overflow-hidden">
+                    <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8 pb-10 overflow-scroll">
                         {messages.map((m) => (
                             <Message key={m.id} {...m} isLoading={isLoading} />
                         ))}
@@ -43,7 +43,7 @@ export default function Home() {
 
                     <form
                         action=""
-                        className=" bg-gradient-to-t from-[#343541] from-[70%] fixed bottom-0 w-[80%] pb-8 px-10"
+                        className=" bg-gradient-to-t from-[#343541] pb-10 from-[70%] px-10"
                         onSubmit={handleSubmit}
                     >
                         <fieldset
@@ -55,14 +55,14 @@ export default function Home() {
                                 onChange={handleInputChange}
                                 onKeyDown={handleKeyDown}
                                 rows={1}
-                                placeholder={`${
+                                placeholder={
                                     isLoading ? "" : "Send a message..."
-                                } `}
-                                className=" bg-[#40414F] w-[80%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
+                                }
+                                className=" bg-[#40414F] w-[75%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
                             />
                             <button
                                 type="submit"
-                                className={`absolute right-[13%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
+                                className={`absolute right-[15%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
                                     !isLoading &&
                                     input !== "" &&
                                     "  text-[#ffffff] bg-[#19C37D] "

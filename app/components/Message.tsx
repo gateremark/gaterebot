@@ -2,6 +2,9 @@
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Markdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+// import remarkGfm from "remark-gfm";
 
 interface MessageProps {
     role: string;
@@ -37,7 +40,20 @@ const Message: React.FC<MessageProps> = ({ role, content, isLoading }) => {
                         alt="gaterebot: "
                         className="rounded inline"
                     />
-                    <div className="pt-1 text-[#d1d5db]">{content}</div>
+                    <div className="pt-1 text-[#d1d5db] prose prose-invert">
+                        {/* {isLoading ? (
+                            <div className="animate-pulse flex gap-1">
+                                <div className="h-3 bg-[#d1d5db] rounded-full w-3"></div>
+                                <div className="h-3 bg-[#d1d5db] rounded-full w-3"></div>
+                                <div className="h-3 bg-[#d1d5db] rounded-full w-3"></div>
+                            </div>
+                        ) : ( */}
+                        <Markdown rehypePlugins={[rehypeHighlight]} >
+                            {content}
+                        </Markdown>
+
+                        {/* )} */}
+                    </div>
                 </div>
             )}
         </>

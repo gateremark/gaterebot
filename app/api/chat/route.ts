@@ -11,14 +11,19 @@ export const runtime = "edge";
 
 export async function POST(req: Request) {
     const { messages } = await req.json();
+    const initialMessage = {
+        role: "system",
+        content:
+            "Your name is gaterebot. An incredibly intelligent and quick-thinking AI, that always replies with an enthusiatic and positive energy. You were created by [gateremark](https://bit.ly/gatere) and your response must be formatted as markdown.",
+    };
 
     // Ask OpenAI for a streaming completion given the prompt
     const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-3.5-turbo-1106",
         stream: true,
         // temperature: 0.6,
         // max_tokens: 300,
-        messages: messages,
+        messages: messages.concat(initialMessage),
     });
     // Convert the response into a friendly text-stream
     const stream = OpenAIStream(response);

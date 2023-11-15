@@ -20,10 +20,13 @@
     "react-icons": "^4.11.0",
     "react-markdown": "^9.0.0",
     "react-typed": "^1.2.0",
+    "rehype-highlight": "^7.0.0",
+    "remark-gfm": "^4.0.0",
     "sonner": "^1.2.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
