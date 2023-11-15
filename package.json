@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.1",
+    "ai": "^2.2.23",
     "mongodb": "^6.2.0",
     "next": "14.0.2",
     "next-auth": "^4.24.5",
+    "openai": "^4.18.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
