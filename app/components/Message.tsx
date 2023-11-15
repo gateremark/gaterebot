@@ -6,9 +6,10 @@ import Image from "next/image";
 interface MessageProps {
     role: string;
     content: string;
+    isLoading: boolean;
 }
 
-const Message: React.FC<MessageProps> = ({ role, content }) => {
+const Message: React.FC<MessageProps> = ({ role, content, isLoading }) => {
     const { data: session } = useSession();
 
     return (

@@ -37,7 +37,7 @@ export default function Home() {
                 <div className="bg-[#343541] flex flex-col">
                     <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8">
                         {messages.map((m) => (
-                            <Message key={m.id} {...m} />
+                            <Message key={m.id} {...m} isLoading={isLoading} />
                         ))}
                     </div>
 
