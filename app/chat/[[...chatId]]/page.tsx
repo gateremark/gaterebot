@@ -18,7 +18,7 @@ export default function Home() {
     // setMessage((s) => `${s}${content}`);
     // console.log("Messages:", messages);
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
         if (e.key === "Enter") {
             e.preventDefault();
             // Submit the form
@@ -53,7 +53,9 @@ export default function Home() {
                                 onChange={handleInputChange}
                                 onKeyDown={handleKeyDown}
                                 rows={1}
-                                placeholder={`${isLoading ? "" : "Send a message..."} `}
+                                placeholder={`${
+                                    isLoading ? "" : "Send a message..."
+                                } `}
                                 className=" bg-[#40414F] w-[80%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
                             />
                             <button
