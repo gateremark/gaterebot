@@ -1,7 +1,7 @@
 "use client";
 
 import { FaGithub } from "react-icons/fa6";
-// import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import { signIn, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -67,7 +67,7 @@ const Signin = () => {
                                 style={{ marginBottom: 0 }}
                                 className=""
                             >
-                                {/* {provider.id === "github" ? ( */}
+                                {provider.id === "github" ? (
                                 <button
                                     className="flex gap-2 items-center justify-center bg-[#000000] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
                                     onClick={() => signIn(provider.id)}
@@ -75,7 +75,7 @@ const Signin = () => {
                                     <FaGithub className="text-2xl" />
                                     Sign in with {provider.name}
                                 </button>
-                                {/*
+                                
                                  ) : (
                                      <button
                                          className="flex gap-2 items-center justify-center text-[#000000] bg-[#ffffff] px-4 py-3 text-xl hover:bg-[#0000FF] rounded transition ease-in-out duration-150 cursor-pointer"
@@ -84,7 +84,7 @@ const Signin = () => {
                                          <FcGoogle className="text-2xl" />
                                          Sign in with {provider.name}
                                      </button>
-                                 )} */}
+                                 )}
                             </div>
                         ))
                     ) : (
