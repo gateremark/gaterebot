@@ -40,7 +40,7 @@ const Message: React.FC<MessageProps> = ({ role, content, isLoading }) => {
                         alt="gaterebot: "
                         className="rounded inline"
                     />
-                    <div className="pt-1 text-[#d1d5db] prose prose-invert">
+                    <div className="pt-1 text-[#d1d5db] prose prose-invert rounded">
                         {/* {isLoading ? (
                             <div className="animate-pulse flex gap-1">
                                 <div className="h-3 bg-[#d1d5db] rounded-full w-3"></div>
