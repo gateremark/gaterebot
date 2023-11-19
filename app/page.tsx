@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { Toaster, toast } from "sonner";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 
 export default function Home() {
     const { data: session } = useSession();

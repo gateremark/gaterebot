@@ -18,7 +18,7 @@ const Signin = () => {
         const fetchProviders = async () => {
             const providers = await getProviders();
             // Handle providers data as needed
-            console.log(providers);
+            // console.log(providers);
             setProviders(providers as Record<string, any> | null);
         };
 

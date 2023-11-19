@@ -1,16 +1,28 @@
 "use client";
 
-import Image from "next/image";
 import { FormEvent } from "react";
 import ChatSidebar from "@/app/components/ChatSidebar";
 import { IoSend } from "react-icons/io5";
 import { useChat } from "ai/react";
 import Message from "@/app/components/Message";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
     const { messages, input, handleInputChange, handleSubmit, isLoading } =
         useChat();
-
+    const role = messages[0]?.role;
+    const content = messages[0]?.content;
+    // const [message, setMessage] = useState("");
+    const { data: session } = useSession();
+    const user = session?.user;
+    const email = user?.email;
+    // console.log("message:", role);
+    const userData = [
+        {
+            role,
+            content,
+        },
+    ];
     // const [prompt, ai] = messages;
     // const { content } = ai || {};
     // console.log("Prompt:", prompt);
@@ -19,14 +31,45 @@ export default function Home() {
     // setMessage((s) => `${s}${content}`);
     // console.log("Messages:", messages);
 
+    const mongoHandleSubmit = async () => {
+        try {
+            const response = await fetch("/api/chat/createNewChat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    title: input,
+                    content: userData,
+                }),
+            });
+
+            const json = await response.json();
+            console.log("Response:", json);
+        } catch (error) {
+            // console.log(typedMessage);
+            console.error("Error submitting the chat:", error);
+        }
+    };
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === "Enter") {
             e.preventDefault();
             const syntheticEvent = e as unknown as FormEvent<HTMLFormElement>;
             // Submit the form
-            handleSubmit(syntheticEvent);
+            // handleSubmit(syntheticEvent);
+            finalSubmit(e);
         }
     };
+    const finalSubmit = (e: any) => {
+        e.preventDefault();
+        handleSubmit(e);
+        mongoHandleSubmit();
+    };
+    // console.log(messages);
+    // console.log("Messages:", messages[0]?.content);
+    // console.log("Input:", input);
 
     return (
         <>
