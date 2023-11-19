@@ -1,4 +1,4 @@
-
+![GitHub deployments](https://img.shields.io/github/deployments/gateremark/gaterebot/production?style=flat&logo=vercel&logoColor=white&label=vercel)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
