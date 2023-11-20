@@ -36,7 +36,7 @@ const ChatSidebar = () => {
         };
 
         getChats();
-    }, []);
+    }, [email]);
 
     return (
         <div className=" bg-[#202123] text-[#ffffff] flex flex-col px-5">
