@@ -58,7 +58,7 @@ const ChatSidebar = () => {
 
             <div className="flex-1 overflow-auto">
                 {chatList.map((chat: any) => (
-                    <Link href={`/chat/${chat._id}`}>
+                    <Link key={chat._id} href={`/chat/${chat._id}`}>
                         <div className="flex items-center gap-2 py-2 px-3 hover:bg-[#000000] rounded-md">
                             <AiFillMessage className="text-xl" />
                             <div className="flex items-center gap-2">
