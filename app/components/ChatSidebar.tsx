@@ -39,7 +39,7 @@ const ChatSidebar = () => {
     }, [email]);
 
     return (
-        <div className=" bg-[#202123] text-[#ffffff] flex flex-col px-5">
+        <div className=" bg-[#202123] text-[#ffffff] flex flex-col px-5 overflow-hidden">
             <Link
                 href="/chat"
                 className="p-3 bg-[#40414F] flex gap-2 items-center hover:bg-[#000000] my-2 rounded-md"
