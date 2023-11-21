@@ -39,33 +39,31 @@ export default function Home() {
         });
     }, [messages]);
 
-    const mongoHandleSubmit = () => {
-        setTimeout(async () => {
-            try {
-                // console.log("Sending data:", {
-                //     email: email,
-                //     title: input,
-                //     messages: messages,
-                // });
+    const mongoHandleSubmit = async () => {
+        try {
+            // console.log("Sending data:", {
+            //     email: email,
+            //     title: input,
+            //     messages: messages,
+            // });
 
-                const response = await fetch("/api/chat/createNewChat", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        title: input,
-                        messages: messages,
-                    }),
-                });
+            const response = await fetch("/api/chat/createNewChat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    title: input,
+                    messages: messages,
+                }),
+            });
 
-                const json = await response.json();
-                console.log("Response:", json);
-            } catch (error) {
-                console.error("Error submitting the chat:", error);
-            }
-        }, 10000);
+            const json = await response.json();
+            console.log("Response:", json);
+        } catch (error) {
+            console.error("Error submitting the chat:", error);
+        }
     };
 
     // setTimeout(() => {
