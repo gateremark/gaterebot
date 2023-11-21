@@ -29,11 +29,11 @@ export default function Home() {
     const mongoHandleSubmit = () => {
             setTimeout(async () => {
                 try {
-                    console.log("Sending data:", {
-                        email: email,
-                        title: input,
-                        messages: messages,
-                    });
+                    // console.log("Sending data:", {
+                    //     email: email,
+                    //     title: input,
+                    //     messages: messages,
+                    // });
 
                     const response = await fetch("/api/chat/createNewChat", {
                         method: "POST",
