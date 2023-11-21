@@ -1,38 +1,92 @@
 ![GitHub deployments](https://img.shields.io/github/deployments/gateremark/gaterebot/production?style=flat&logo=vercel&logoColor=white&label=vercel)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GatereBot
 
-## Getting Started
+GatereBot is a ChatGPT-inspired project that leverages the OpenAI API for real-time natural language processing. It is built using NextJS, Tailwind CSS, OpenAI API, MongoDB and Mongoose for chat storage, React Markdown, Vercel AI SDK, and Next Auth for authentication.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   [Features](#features)
+-   [Technologies Used](#technologies)
+-   [Installation](#installation)
+-   [Deployment](#deployment)
+-   [Contributing](#contributing)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   Utilizes NextJS and Tailwind CSS for a responsive and modern UI
+-   Real-time natural language processing using OpenAI API
+-   Chat storage in MongoDB with Mongoose
+-   User authentication with Next Auth
+-   Integration with Vercel AI SDK for enhanced functionality
+-   Supports rendering of React Markdown for rich content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies
 
-## Learn More
+-   [NextJS](https://nextjs.org/) : React framework for server-side rendering and optimal performance.
+-   [Tailwind CSS](https://tailwindcss.com/) : A utility-first CSS framework for rapidly designing responsive web pages.
+-   [OpenAI API](https://platform.openai.com/docs/overview) : Enables real-time natural language processing for user interactions.
+-   [MongoDB](https://www.mongodb.com/) and [Mongoose](https://mongoosejs.com/) : NoSQL database and ODM for flexible data storage and modeling.
+-   [React Markdown](https://www.npmjs.com/package/react-markdown) : Library for rendering Markdown content as React components.
+-   [Vercel AI SDK](https://sdk.vercel.ai/docs) : Integrates AI capabilities into the application deployed on Vercel.
+-   [Next Auth](https://next-auth.js.org/) : Authentication library for secure user access with social authentication providers.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/gateremark/gaterebot.git
+    ```
 
-## Deploy on Vercel
+2. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    cd gaterebot
+    pnpm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Set up environment variables. Create a `.env` file in the root of your project and add the following:
+
+    ```bash
+    NEXTAUTH_SECRET=replace_me
+    GITHUB_ID=replace_me
+    GITHUB_SECRET=replace_me
+    GOOGLE_CLIENT_ID=replace_me
+    GOOGLE_CLIENT_SECRET=replace_me
+    OPENAI_API_KEY=replace_me
+    MONGODB_URI=replace_me
+    ```
+
+4. Run the development server:
+
+    ```bash
+    pnpm run dev
+    ```
+
+5. Open your browser and navigate to http://localhost:3000.
+
+## Deployment
+
+GatereBot is deployed using Vercel. Any changes pushed to the main branch will trigger an automatic deployment.
+You can visit the live version of gaterebot at https://gaterebot.vercel.app/.
+
+## Contributing
+
+Welcoming all contributions to improve the project! To contribute, please follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature:
+    ```bash
+    git checkout -b feature-name
+    ```
+3. Make your changes and commit them:
+    ```bash
+    git commit -m "Description of your changes"
+    ```
+4. Push your changes to your fork:
+    ```bash
+    git push origin feature-name
+    ```
+5. Submit a pull request to the main branch of the original repository.
