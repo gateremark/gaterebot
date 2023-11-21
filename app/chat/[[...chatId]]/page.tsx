@@ -137,11 +137,11 @@ export default function Home() {
                                 placeholder={
                                     isLoading ? "" : "Send a message..."
                                 }
-                                className=" bg-[#40414F] md:w-[75%] w-[90%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
+                                className=" bg-[#40414F] md:w-[75%] w-[100%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
                             />
                             <button
                                 type="submit"
-                                className={`absolute md:right-[15%] right-[10%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
+                                className={`absolute md:right-[15%] right-[5%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
                                     !isLoading &&
                                     input !== "" &&
                                     "  text-[#ffffff] bg-[#19C37D] "
