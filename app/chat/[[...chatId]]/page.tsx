@@ -7,51 +7,58 @@ import { useChat } from "ai/react";
 import Message from "@/app/components/Message";
 import { useSession } from "next-auth/react";
 
+
 export default function Home() {
-    const { messages, input, handleInputChange, handleSubmit, isLoading } =
-        useChat();
-    const role = messages[0]?.role;
-    const content = messages[0]?.content;
-    // const [message, setMessage] = useState("");
     const { data: session } = useSession();
     const user = session?.user;
     const email = user?.email;
-    // console.log("message:", role);
-    const userData = [
-        {
-            role,
-            content,
-        },
-    ];
-    // const [prompt, ai] = messages;
-    // const { content } = ai || {};
-    // console.log("Prompt:", prompt);
-    // console.log("AI:", ai);
-    // console.log("Content:", content);
-    // setMessage((s) => `${s}${content}`);
+
+    const { messages, input, handleInputChange, handleSubmit, isLoading, setMessages } =
+        useChat();
     // console.log("Messages:", messages);
+    setMessages(messages);
+    // const [prompt, ai] = messages;
+    // console.log("Prompt:", prompt?.content);
+    // messages.map((m) => console.log("new content:", m.content));
+    // console.log("AI:", ai?.content);
+    // const userData = prompt?.content + "\n" + ai?.content;
+    // console.log("User Data:", userData);
 
-    const mongoHandleSubmit = async () => {
-        try {
-            const response = await fetch("/api/chat/createNewChat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    title: input,
-                    content: userData,
-                }),
-            });
 
-            const json = await response.json();
-            console.log("Response:", json);
-        } catch (error) {
-            // console.log(typedMessage);
-            console.error("Error submitting the chat:", error);
-        }
+
+    const mongoHandleSubmit = () => {
+            setTimeout(async () => {
+                try {
+                    console.log("Sending data:", {
+                        email: email,
+                        title: input,
+                        messages: messages,
+                    });
+
+                    const response = await fetch("/api/chat/createNewChat", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            title: input,
+                            messages: messages,
+                        }),
+                    });
+
+                    const json = await response.json();
+                    console.log("Response:", json);
+                } catch (error) {
+                    console.error("Error submitting the chat:", error);
+                }
+            }, 10000);
     };
+
+    // setTimeout(() => {
+    //     mongoHandleSubmit();
+    // }, 10000);
+    // setTimeout(mongoHandleSubmit, 10000);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === "Enter") {
@@ -75,10 +82,10 @@ export default function Home() {
         <>
             <title>New Chat</title>
 
-            <div className="grid h-screen md:grid-cols-[260px_1fr]">
+            <div className="flex h-screen">
                 <ChatSidebar />
-                <div className="bg-[#343541] flex flex-col overflow-hidden">
-                    <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8 pb-10 overflow-scroll">
+                <div className="bg-[#343541] flex flex-1 flex-col overflow-hidden">
+                    <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8 pb-10 overflow-y-scroll">
                         {messages.map((m) => (
                             <Message key={m.id} {...m} isLoading={isLoading} />
                         ))}
@@ -101,11 +108,11 @@ export default function Home() {
                                 placeholder={
                                     isLoading ? "" : "Send a message..."
                                 }
-                                className=" bg-[#40414F] w-[75%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
+                                className=" bg-[#40414F] md:w-[75%] w-[90%] resize-none rounded-lg text-[#ffffff] p-4 focus:outline-none overflow-y-hidden"
                             />
                             <button
                                 type="submit"
-                                className={`absolute right-[15%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
+                                className={`absolute md:right-[15%] right-[10%] focus:outline-none p-[6px] rounded transition ease-in-out duration-150 ${
                                     !isLoading &&
                                     input !== "" &&
                                     "  text-[#ffffff] bg-[#19C37D] "

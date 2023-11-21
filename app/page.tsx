@@ -16,7 +16,7 @@ export default function Home() {
         );
     }
 
-    console.log(session?.user);
+    // console.log(session?.user);
     // console.log(session?.user?.name ?? "No user found");
 
     return (

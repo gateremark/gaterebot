@@ -7,7 +7,7 @@ const chatSchema = new Schema(
     {
         email: String,
         title: String,
-        content: Array,
+        messages: Object,
     },
     {
         timestamps: true,
