@@ -6,15 +6,23 @@ import { IoSend } from "react-icons/io5";
 import { useChat } from "ai/react";
 import Message from "@/app/components/Message";
 import { useSession } from "next-auth/react";
-
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
     const { data: session } = useSession();
     const user = session?.user;
     const email = user?.email;
+    const bottomRef = useRef<HTMLDivElement>(null);
 
-    const { messages, input, handleInputChange, handleSubmit, isLoading, setMessages } =
-        useChat();
+    const {
+        messages,
+        input,
+        handleInputChange,
+        handleSubmit,
+        isLoading,
+        setMessages,
+    } = useChat();
     // console.log("Messages:", messages);
     setMessages(messages);
     // const [prompt, ai] = messages;
@@ -24,35 +32,40 @@ export default function Home() {
     // const userData = prompt?.content + "\n" + ai?.content;
     // console.log("User Data:", userData);
 
-
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    }, [messages]);
 
     const mongoHandleSubmit = () => {
-            setTimeout(async () => {
-                try {
-                    // console.log("Sending data:", {
-                    //     email: email,
-                    //     title: input,
-                    //     messages: messages,
-                    // });
+        setTimeout(async () => {
+            try {
+                // console.log("Sending data:", {
+                //     email: email,
+                //     title: input,
+                //     messages: messages,
+                // });
 
-                    const response = await fetch("/api/chat/createNewChat", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            title: input,
-                            messages: messages,
-                        }),
-                    });
+                const response = await fetch("/api/chat/createNewChat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        title: input,
+                        messages: messages,
+                    }),
+                });
 
-                    const json = await response.json();
-                    console.log("Response:", json);
-                } catch (error) {
-                    console.error("Error submitting the chat:", error);
-                }
-            }, 10000);
+                const json = await response.json();
+                console.log("Response:", json);
+            } catch (error) {
+                console.error("Error submitting the chat:", error);
+            }
+        }, 10000);
     };
 
     // setTimeout(() => {
@@ -85,10 +98,26 @@ export default function Home() {
             <div className="flex h-screen">
                 <ChatSidebar />
                 <div className="bg-[#343541] flex flex-1 flex-col overflow-hidden">
+                    {!messages.length && !isLoading && (
+                        <div className="m-auto h-screen flex flex-col justify-center items-center text-center">
+                            <Image
+                                src="https://res.cloudinary.com/dvuazircp/image/upload/v1699262306/new_portfolio/gaterebotorig_ymxuzb.webp"
+                                priority={true}
+                                width={300}
+                                height={300}
+                                alt="gaterebot logo"
+                                className="w-1/2"
+                            />
+                            <h1 className="text-4xl font-bold text-white/50 mt-2">
+                                Ask me a question
+                            </h1>
+                        </div>
+                    )}
                     <div className=" flex-1 text-[#ececf1] lg:px-28 md:px-8 pb-10 overflow-y-scroll">
                         {messages.map((m) => (
                             <Message key={m.id} {...m} isLoading={isLoading} />
                         ))}
+                        <div ref={bottomRef}></div>
                     </div>
 
                     <form
