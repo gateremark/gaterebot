@@ -17,7 +17,7 @@ const ChatSidebar = () => {
 
     const user = session?.user;
     const email = user?.email;
-    console.log("email: ", email);
+    // console.log("email: ", email);
 
     // const params = new URLSearchParams({ email: email ?? '' });
     // console.log("params")
@@ -42,14 +42,14 @@ const ChatSidebar = () => {
 
         getChats();
     }, [email]);
-    console.log("chatList", chatList);
+    // console.log("chatList", chatList);
 
     useEffect(()=>{
        const filteredData = chatList.filter((chat:any)=> chat.email == email)
        setFilteredData(filteredData);
     }, [chatList])
 
-    console.log(filteredData)
+    // console.log(filteredData)
 
     return (
         <div
