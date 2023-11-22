@@ -15,16 +15,9 @@ export default function Home() {
     const email = user?.email;
     const bottomRef = useRef<HTMLDivElement>(null);
 
-    const {
-        messages,
-        input,
-        handleInputChange,
-        handleSubmit,
-        isLoading,
-        setMessages,
-    } = useChat();
+    const { messages, input, handleInputChange, handleSubmit, isLoading } =
+        useChat();
     // console.log("Messages:", messages);
-    setMessages(messages);
     // const [prompt, ai] = messages;
     // console.log("Prompt:", prompt?.content);
     // messages.map((m) => console.log("new content:", m.content));
