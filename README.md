@@ -4,6 +4,24 @@
 
 GatereBot is a ChatGPT-inspired project that leverages the OpenAI API for real-time natural language processing. It is built using NextJS, Tailwind CSS, OpenAI API, MongoDB and Mongoose for chat storage, React Markdown, Vercel AI SDK, and Next Auth for authentication.
 
+<div align="center">
+<a href="https://gaterebot.vercel.app/">
+   
+![GatereBotAuth](https://firebasestorage.googleapis.com/v0/b/gateremark.appspot.com/o/gaterebot1.png?alt=media&token=9900d90c-15a6-4c02-bad1-a5a3db557f73)
+
+</a>
+</div>
+
+---
+
+<div align="center">
+<a href="https://gaterebot.vercel.app/">
+   
+![GatereBot](https://firebasestorage.googleapis.com/v0/b/gateremark.appspot.com/o/gaterebot3.png?alt=media&token=0f51faf8-f61b-4a51-9320-14e13f3e0e10)
+
+</a>
+</div>
+
 ## Table of Contents
 
 -   [Features](#features)
