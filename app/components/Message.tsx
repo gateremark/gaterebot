@@ -4,8 +4,6 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-// import { useState, useEffect } from "react";
-// import remarkGfm from "remark-gfm";
 
 interface MessageProps {
     role: string;
@@ -14,53 +12,11 @@ interface MessageProps {
 }
 
 const Message: React.FC<MessageProps> = ({ role, content, isLoading }) => {
-    // const [chatList, setChatList] = useState([]);
     const { data: session } = useSession();
     const email = session?.user?.email;
 
-    // useEffect(() => {
-    //     const getChats = async () => {
-    //         try {
-    //             const response = await fetch(
-    //                 `/api/chat/getChats?email=${email}`,
-    //                 {
-    //                     method: "GET",
-    //                     headers: {
-    //                         "Content-Type": "application/json",
-    //                     },
-    //                 }
-    //             );
-
-    //             const json = await response.json();
-    //             console.log("Response:", json);
-    //             setChatList(json?.chats ?? []);
-    //             console.log("ChatList:", chatList);
-    //         } catch (error) {
-    //             console.error("Error getting chats:", error);
-    //         }
-    //     };
-
-    //     getChats();
-    // }, [email]);
-
     return (
         <>
-            {/* <div className="flex-1 overflow-y-scroll">
-                {chatList.map((chat: any) => (
-                    <Link key={chat._id} href={`/chat/${chat._id}`}>
-                        <div
-                            title={chat.title}
-                            className="flex items-center gap-2 py-2 px-3 hover:bg-[#000000] rounded-md"
-                        >
-                            <AiFillMessage className="text-xl" />
-                            <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                                {chat.title}
-                            </span>
-                        </div>
-                    </Link>
-                ))}
-            </div> */}
-
             {role === "user" ? (
                 <div className="p-4 flex gap-5 items-start">
                     <Image

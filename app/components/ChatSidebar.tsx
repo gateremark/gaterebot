@@ -13,26 +13,28 @@ const ChatSidebar = () => {
     const { data: session } = useSession();
     const [chatList, setChatList] = useState([]);
     const [openSidebar, setOpenSidebar] = useState(true);
+    const [filteredData, setFilteredData] = useState([])
 
     const user = session?.user;
     const email = user?.email;
+    console.log("email: ", email);
+
+    // const params = new URLSearchParams({ email: email ?? '' });
+    // console.log("params")
 
     useEffect(() => {
         const getChats = async () => {
             try {
-                const response = await fetch(
-                    `/api/chat/getChats?email=${email}`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
+                const response = await fetch(`/api/chat/getChats`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
 
                 const json = await response.json();
                 // console.log("Response:", json);
-                setChatList(json?.chats ?? []);
+                setChatList(json?.chats);
             } catch (error) {
                 console.error("Error getting chats:", error);
             }
@@ -40,6 +42,14 @@ const ChatSidebar = () => {
 
         getChats();
     }, [email]);
+    console.log("chatList", chatList);
+
+    useEffect(()=>{
+       const filteredData = chatList.filter((chat:any)=> chat.email == email)
+       setFilteredData(filteredData);
+    }, [chatList])
+
+    console.log(filteredData)
 
     return (
         <div
@@ -76,7 +86,7 @@ const ChatSidebar = () => {
             </div>
 
             <div className="flex-1 overflow-y-scroll">
-                {chatList.map((chat: any) => (
+                {filteredData.map((chat: any) => (
                     <Link key={chat._id} href={`/chat/${chat._id}`}>
                         <div
                             title={chat.title}
